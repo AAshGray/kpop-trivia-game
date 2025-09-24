@@ -1,4 +1,28 @@
 // global question array
+const questions=[
+    {
+        question: "How many members are in the group seventeen ?",
+        answers: ["10", "13", "17", "9"],
+        correctAnswer: "13"
+    },
+    {
+        question: "What is the fandom name for the boy group ATEEZ",
+        answers: ["ATINY", "MOA", "CARAT", "STAY"],
+        correctAnswer: "ATINY"
+    },
+    {
+        question: "In what year did TWICE debut?",
+        answers: ["2015", "2016", "2017", "2018"],
+        correctAnswer: "2015"
+    },
+    {
+        question: "What is the fandom name for the boy group ATEEZ",
+        answers: ["ATINY", "MOA", "CARAT", "STAY"],
+        correctAnswer: "ATINY"
+    },
+    
+    
+]
 
 const { createElement } = require("react");
 
