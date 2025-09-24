@@ -18,15 +18,41 @@ function loadArray(name) {
 }
 function pickQuestion(object) {
  // pick a question from the array and set up the problem and answer on the page
- if progess = object.length //display congratulations you won :D
+ //if there is no more questions, alert the user that the game is over and show their score
+ if(arr.length===0){
+    alert(`Game Over! You scored ${currentScore} points!`)
+ }
 }
 
 function checkAnswer() {
  // return the value of the selected item (radio button) and check it against the hidden value (correct answer)
+ const selected = document.querySelector('input[name="answer"]:checked').value;
+ //check if selected is equal to correctAnswer
+ if(selected.value===qa.correctAnswer){
+    currentScore++;
+    alert("Correct!")
+ } else{
+    alert(`Wrong! The correct answer was ${qa.correctAnswer}`)
+ }
+ //increment progress
+ progress++;
+ //load next question
+ buildPage();
 }
 
 function updateScore() {
-//when a question is correct, update the score total
+    //when a question is correct, update the score total
+    //check if the element exists first
+    let scoreDisplay = document.getElementById("score");
+    if(!scoreDisplay){
+        //create the element if it doesn't exist
+       scoreDisplay= document.createElement("p");
+       scoreDisplay.id="score"
+       document.getElementById("main").appendChild(scoreDisplay);
+    }
+    //update the score display
+    scoreDisplay.textContent = `Score: ${currentScore}`;
+
 }
 
 function updateProgress(object) {
