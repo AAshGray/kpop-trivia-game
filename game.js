@@ -52,7 +52,6 @@ function pickQuestion(remainingQuestions) {
             
             const refreshButton = document.createElement("button");
             refreshButton.textContent = "Retry?";
-            refreshButton.style.marginTop = "10px";
             refreshButton.onclick = () => location.reload(); // reloads the page
             messageBox.appendChild(document.createElement("br"));
             messageBox.appendChild(refreshButton);
@@ -108,7 +107,6 @@ function buildPage() {
 
     const messageBox = document.createElement("div");
     messageBox.id = "messageBox";
-    messageBox.style.marginBottom = "10px";
     main.appendChild(messageBox);
 
     const qa = pickQuestion(remainingQuestions);
@@ -155,7 +153,10 @@ function buildPage() {
         label.prepend(radio); // button before the text
         form.appendChild(label);
     }
-    
+    // add a line break before the submit button
+    const br = document.createElement("br");
+    form.appendChild(br);
+
     // create a button to check the answer
     const submitButton = document.createElement("button");
     submitButton.type = "button";
