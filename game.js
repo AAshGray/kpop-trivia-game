@@ -20,106 +20,162 @@ const questions=[
         answers: ["ATINY", "MOA", "CARAT", "STAY"],
         correctAnswer: "ATINY"
     },
-    
-    
 ]
 
-const { createElement } = require("react");
+// remember how many questions we had at the start of the game
+const totalQuestions = questions.length;
 
-// array = json file?
-let object = loadArray("file-name");
+// mutable copy of the questions so we can change these
+let remainingQuestions = [...questions];
 
-// global score value
-let currentScore = 0
-let progress = 0
+// global score values
+const pointValue = 100;
+let currentScore = 0;
+let progress = 0;
 
-let correctAnswer = null;
-
-function loadArray(name) {
-    // todo - convert json file to object
-
-    return object
-}
-function pickQuestion(object) {
+function pickQuestion(remainingQuestions) {
  // pick a question from the array and set up the problem and answer on the page
  //if there is no more questions, alert the user that the game is over and show their score
- if(arr.length===0){
-    alert(`Game Over! You scored ${currentScore} points!`)
- }
+    
+    // if we're out of questions we show the final score and clear the form
+    if (remainingQuestions.length === 0) {
+        
+        // remove the form
+        const form = document.getElementById("quizForm");
+        if (form) form.remove();
+        
+        // display a message and a retry button
+        const messageBox = document.getElementById("messageBox");
+        if (messageBox) {
+            messageBox.textContent = `You have answered all the questions. Your score was ${currentScore} points!`;
+            messageBox.style.color = "blue";
+            
+            const refreshButton = document.createElement("button");
+            refreshButton.textContent = "Retry?";
+            refreshButton.style.marginTop = "10px";
+            refreshButton.onclick = () => location.reload(); // reloads the page
+            messageBox.appendChild(document.createElement("br"));
+            messageBox.appendChild(refreshButton);
+        }
+        
+        return;
+    }
+
+    //otherwise pick a random number to decide a question
+    const index = Math.floor(Math.random() * remainingQuestions.length);
+
+    // remove the question from the array and return that question to build the form
+    const qa = remainingQuestions.splice(index, 1)[0];
+    progress++; // selected a question so update what # we're on
+    return qa
 }
 
-function checkAnswer() {
- // return the value of the selected item (radio button) and check it against the hidden value (correct answer)
- const selected = document.querySelector('input[name="answer"]:checked').value;
- //check if selected is equal to correctAnswer
- if(selected.value===qa.correctAnswer){
-    currentScore++;
-    alert("Correct!")
- } else{
-    alert(`Wrong! The correct answer was ${qa.correctAnswer}`)
- }
- //increment progress
- progress++;
- //load next question
- buildPage();
+function checkAnswer(correctAnswer) {
+    // return the value of the selected item (radio button) and check it against the hidden value (correct answer)
+    const selectedValue = document.querySelector('input[name="answer"]:checked').value;
+    //check if selected is equal to correctAnswer
+    if(selectedValue===correctAnswer){
+        updateScore();
+        alert(`Correct! You earned ${pointValue} points!`);
+    } else{
+        alert(`Wrong! The correct answer was ${correctAnswer}`)
+    }
+
+    //load next question
+    buildPage();
 }
 
 function updateScore() {
     //when a question is correct, update the score total
     //check if the element exists first
-    let scoreDisplay = document.getElementById("score");
-    if(!scoreDisplay){
-        //create the element if it doesn't exist
-       scoreDisplay= document.createElement("p");
-       scoreDisplay.id="score"
-       document.getElementById("main").appendChild(scoreDisplay);
+    
+    // update hte total points
+    currentScore+=pointValue;
+    
+    // update the element on the page
+    const scoreDisplay = document.getElementById("score");
+    if (scoreDisplay){
+        //update the score display
+        scoreDisplay.textContent = `Score: ${currentScore}`;
     }
-    //update the score display
-    scoreDisplay.textContent = `Score: ${currentScore}`;
-
-}
-
-function updateProgress(object) {
-    // display number x of totalArrayLength
-}
-
-function updateObject(object) {
-    // update the array so that you don't get a duplicate question
 }
 
 function buildPage() {
-    main = document.getElementById("main");
-    qa = pickQuestion(object);
+    let main = document.getElementById("main");
     
     //clear out main in case this is a new question
     main.textContent = ""
 
-    //add new children to main based on the question we picked
-    question = createElement(h1);
-    main.addChild(question);
+    const messageBox = document.createElement("div");
+    messageBox.id = "messageBox";
+    messageBox.style.marginBottom = "10px";
+    main.appendChild(messageBox);
+
+    const qa = pickQuestion(remainingQuestions);
+    if (!qa) return;
+    const correctAnswer = qa.correctAnswer
+
+    // display question
+    const question = document.createElement("h1");
     question.id = "question"
+    question.textContent = qa.question;
+    main.appendChild(question);
 
-    scoreDisplay = createElement(p);
-    main.addChild(scoreDisplay)
-    scoreDisplay.textContent = currentScore;
-    scoreDisplay.id = "score"
+    // display score
+    const scoreDisplay = document.createElement("p");
+    scoreDisplay.id = "score";
+    scoreDisplay.textContent = `Score: ${currentScore}`;
+    main.appendChild(scoreDisplay);
 
-    progressDisplay = createElement(p);
-    main.addChild(progressDisplay);
-    progressDisplay.textContent = `${progress} / ${object.length}`
-    progress.id = "progress"
-    
-    for (item of qa.answers) {
+    // display current progress (Question # / Total Questions)
+    const progressDisplay = document.createElement("p");
+    progressDisplay.id = "progress";
+    progressDisplay.textContent = `${progress} / ${totalQuestions}`;
+    main.appendChild(progressDisplay);
+
+    // create form
+    const form = document.createElement("form");
+    form.id = "quizForm";
+    main.appendChild(form);
+    for (let answer of qa.answers) {
+        // label
+        const label = document.createElement("label");
+
+
         //add radio button
-        //add text for radio button
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "answer";
+
         //add value for radio button
+        radio.value = answer;
+
+        //add text for radio button
+        label.textContent = answer;
+        label.prepend(radio); // button before the text
+        form.appendChild(label);
     }
     
+    // create a button to check the answer
+    const submitButton = document.createElement("button");
+    submitButton.type = "button";
+    submitButton.textContent = "Check Answer";
+    submitButton.disabled = true; // disable button until there's a selection
+    form.appendChild(submitButton);
+    
+    // add an event listener to all the radio buttons so if they change we can then push the submit button
+    const radios = form.querySelectorAll('input[name="answer"]');
+    radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            submitButton.disabled = false;
+        })
+    })
 
-    correctAnswer = qa.correctAnswer;
+    // if the button is enabled and it's clicked, check the answer
+    submitButton.onclick = function() {
+        checkAnswer(correctAnswer);
+    }
 }
 
-window.addEventListener('load', () => {
-    buildPage();
-})
+buildPage();
 
