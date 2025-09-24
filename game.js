@@ -128,7 +128,7 @@ function buildPage() {
     // display current progress (Question # / Total Questions)
     const progressDisplay = document.createElement("p");
     progressDisplay.id = "progress";
-    progressDisplay.textContent = `${progress} / ${totalQuestions}`;
+    progressDisplay.textContent = `Question ${progress} / ${totalQuestions}`;
     main.appendChild(progressDisplay);
 
     // create form
