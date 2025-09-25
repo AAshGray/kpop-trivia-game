@@ -15,11 +15,30 @@ const questions=[
         answers: ["2015", "2016", "2017", "2018"],
         correctAnswer: "2015"
     },
+    
     {
-        question: "What is the fandom name for the boy group ATEEZ",
-        answers: ["ATINY", "MOA", "CARAT", "STAY"],
-        correctAnswer: "ATINY"
+        question: "The boy group ENHYPEN was formed through which survival reality show?",
+        answers: ["Produce X 101", "BOYS PLANET", " I-LAND", "SIXTEEN"],
+        correctAnswer: "I-LAND"
     },
+    {
+        question: "Which of these songs is NOT a title track by the group Stray Kids?",
+        answers: ["Blue Hour", "Back Door", " S-Class", "God's Menu"],
+        correctAnswer: "Blue Hour"
+    },
+    {
+    question: "Which member is this?",
+    image: "exo-kai-oj0qvm2w1pzs23zy.jpg", 
+    answers: ["Kai", "V", "Dino", "Jungkook"],
+    correctAnswer: "Kai"
+   },
+   {
+        question: "This idol is the leader of LE SSERAFIM. Who is she?",
+        image: "Chaewon.jpg",
+        answers: ["Yunjin", "Chaewon", "Kazuha", "Eunchae"],
+        correctAnswer: "Chaewon"
+    },
+
 ]
 
 // remember how many questions we had at the start of the game
@@ -130,6 +149,19 @@ function buildPage() {
     progressDisplay.id = "progress";
     progressDisplay.textContent = `Question ${progress} / ${totalQuestions}`;
     main.appendChild(progressDisplay);
+
+    // Show image if it exists
+    if (qa.image) {
+        const img = document.createElement("img");
+        img.src = qa.image;
+        img.alt = "Question image";
+        img.style.maxWidth = "300px"; // scales the image
+        img.style.display = "block";
+        img.style.margin = "10px auto"; // centers image horizontally
+        img.style.borderRadius = "10px";
+        main.appendChild(img);
+    }
+
 
     // create form
     const form = document.createElement("form");
