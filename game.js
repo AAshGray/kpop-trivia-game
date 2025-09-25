@@ -17,21 +17,18 @@ const questions=[
         answers: ["2015", "2016", "2017", "2018"],
         correctAnswer: "2015"
     },
-    
     {
         question: "The boy group ENHYPEN was formed through which survival reality show?",
         image: "enhypen.jpg",
         answers: ["Produce X 101", "BOYS PLANET", "I-LAND", "SIXTEEN"],
         correctAnswer: "I-LAND"
     },
-    
     {
         question: "Which of these songs is NOT a title track by the group Stray Kids?",
         answers: ["Blue Hour", "Back Door", "S-Class", "God's Menu"],
         correctAnswer: "Blue Hour"
     },
     {
-
     question: "Which member is this?",
     image: "exo-kai-oj0qvm2w1pzs23zy.jpg", 
     answers: ["Kai", "V", "Dino", "Jungkook"],
@@ -60,7 +57,6 @@ const questions=[
         answers: ["BTS", "PSY", "EXO", "seventeen"],
         correctAnswer: "SEVENTEEN"
     },
-
     {
         question: "What group does these lightstick belong to?",
         image: "Lightstick.jpg",
@@ -79,6 +75,7 @@ let remainingQuestions = [...questions];
 
 // global score values
 const pointValue = 100;
+const totalScore = totalQuestions * pointValue
 let currentScore = 0;
 let progress = 0;
 
@@ -96,7 +93,8 @@ function pickQuestion(remainingQuestions) {
         // display a message and a retry button
         const messageBox = document.getElementById("messageBox");
         if (messageBox) {
-            messageBox.textContent = `You have answered all the questions. Your score was ${currentScore} points!`;
+            messageBox.style.minHeight = "30px";
+            messageBox.textContent = `You have answered all the questions. Your score was ${currentScore} of ${totalScore} points!`;
             messageBox.style.color = "blue";
             
             const refreshButton = document.createElement("button");
@@ -144,7 +142,7 @@ function updateScore() {
     const scoreDisplay = document.getElementById("score");
     if (scoreDisplay){
         //update the score display
-        scoreDisplay.textContent = `Score: ${currentScore}`;
+        scoreDisplay.textContent = `Score: ${currentScore} / ${totalScore}`;
     }
 }
 
@@ -156,6 +154,7 @@ function buildPage() {
 
     const messageBox = document.createElement("div");
     messageBox.id = "messageBox";
+    messageBox.style.minHeight = "0px";
     main.appendChild(messageBox);
 
     const qa = pickQuestion(remainingQuestions);
@@ -171,7 +170,7 @@ function buildPage() {
     // display score
     const scoreDisplay = document.createElement("p");
     scoreDisplay.id = "score";
-    scoreDisplay.textContent = `Score: ${currentScore}`;
+    scoreDisplay.textContent = `Score: ${currentScore} / ${totalScore}`;
     main.appendChild(scoreDisplay);
 
     // display current progress (Question # / Total Questions)
