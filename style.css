@@ -1,0 +1,173 @@
+body {
+    font-family: 'Arial', sans-serif;
+    /* Soft, light pink background */
+    background-color: #ffe8f2; 
+    color: #444; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+#main {
+    background-color: #ffffff;
+    padding: 100px;
+    /* Very rounded edges for cuteness */
+    border-radius: 25px; 
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2); /* Pink glow shadow */
+    max-width: 500px;
+    width: 100%;
+    /* *** START LAYOUT CHANGES ***
+    Use Flexbox for the main container to organize its children (header, question, form)
+    */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all contents horizontally */
+    text-align: center; /* Center text within individual elements */
+    border: 3px solid #ffb6c1; 
+}
+
+/* New container for the score and progress at the top */
+.info-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+
+/* Header and Info Styling */
+#question {
+    order: 2; /* Put the question after the header info */
+    font-size: 1.6em;
+    color: #8a2be2;
+    margin-bottom: 25px;
+    /* Removed old border as we are using a dedicated info-header now */
+    padding-bottom: 0; 
+    font-weight: 900;
+    line-height: 1.3;
+    width: 100%; /* Ensure it spans the width for alignment */
+    text-align: center; /* Center the question text */
+}
+
+#score, #progress {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0; /* Remove default margins */
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+#score {
+    color: #00bcd4; 
+    background-color: #e0f7fa; /* Light background for the box */
+}
+
+#progress {
+    color: #ff69b4; 
+    background-color: #ffe0eb; /* Light pink background for the box */
+}
+
+#messageBox {
+    min-height: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #ff4081;
+}
+
+
+/* Form and Answer Choices */
+#quizForm {
+    order: 3; /* Put the form after the question */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center; /* Center the answer labels and button */
+    padding: 10px 0;
+    width: 100%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #d8f3fd;
+    padding: 15px 20px;
+    border-radius: 12px;
+    /* Set a consistent max width for the labels and center them */
+    max-width: 80%; 
+    width: 100%; 
+    text-align: left;
+    transition: background-color 0.2s, transform 0.1s;
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+label:hover {
+    background-color: #b2e6ff;
+    transform: scale(1.02);
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 3px solid #c3a6ff; 
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+}
+
+input[type="radio"]:checked {
+    background-color: #ff69b4; 
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px #ffffff inset; 
+}
+
+/* Button Styling (Check Answer & Retry) */
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s, transform 0.1s;
+    /* Use a fixed, centered width for the button */
+    width: 80%; 
+    max-width: 300px; 
+    margin-top: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* Style for Check Answer Button */
+#quizForm button {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 4px #e05c9a;
+}
+/* (Keep hover and disabled states from previous CSS) */
+
+/* Style for Retry Button in messageBox */
+#messageBox button {
+    /* Keep the retry button styles */
+    background-color: #00bcd4;
+    color: white;
+    width: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    box-shadow: 0 3px #00a4b7;
+}
+
+#messageBox button:hover {
+    background-color: #00a5bb;
+}
