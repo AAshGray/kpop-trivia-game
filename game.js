@@ -7,19 +7,19 @@ const questions=[
     },
     {
         question: "What is the fandom name for the boy group ATEEZ",
-        image:"atezz.jpg",
+        image:"img/atezz.jpg",
         answers: ["ATINY", "MOA", "CARAT", "STAY"],
         correctAnswer: "ATINY"
     },
     {
         question: "In what year did TWICE debut?",
-        image: "twice.jpg",
+        image: "img/twice.jpg",
         answers: ["2015", "2016", "2017", "2018"],
         correctAnswer: "2015"
     },
     {
         question: "The boy group ENHYPEN was formed through which survival reality show?",
-        image: "enhypen.jpg",
+        image: "img/enhypen.jpg",
         answers: ["Produce X 101", "BOYS PLANET", "I-LAND", "SIXTEEN"],
         correctAnswer: "I-LAND"
     },
@@ -30,19 +30,19 @@ const questions=[
     },
     {
     question: "Which member is this?",
-    image: "exo-kai-oj0qvm2w1pzs23zy.jpg", 
+    image: "img/exo-kai-oj0qvm2w1pzs23zy.jpg", 
     answers: ["Kai", "V", "Dino", "Jungkook"],
     correctAnswer: "Kai"
    },
    {
         question: "This idol is the leader of LE SSERAFIM. Who is she?",
-        image: "Chaewon.jpg",
+        image: "img/Chaewon.jpg",
         answers: ["Yunjin", "Chaewon", "Kazuha", "Eunchae"],
         correctAnswer: "Chaewon"
     },
      {
         question: "Who was the first k-pop group to perform at Coachella?",
-        image:"Coachella.jpg",
+        image:"img/Coachella.jpg",
         answers: ["BTS", "EXO", "EPIK High", "BLACKPINK"],
         correctAnswer: "EPIK High"
     },
@@ -53,13 +53,13 @@ const questions=[
     },
     {
         question: "What group does these logos belong to?",
-        image: "seventeen logo.jpg",
+        image: "img/seventeen logo.jpg",
         answers: ["BTS", "PSY", "EXO", "seventeen"],
         correctAnswer: "SEVENTEEN"
     },
     {
         question: "What group does these lightstick belong to?",
-        image: "Lightstick.jpg",
+        image: "img/Lightstick.jpg",
         answers: ["ATEEZ", "TXT", "EXO", "seventeen"],
         correctAnswer: "ATEEZ"
     },
