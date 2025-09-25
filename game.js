@@ -20,16 +20,11 @@ const questions=[
     
     {
         question: "The boy group ENHYPEN was formed through which survival reality show?",
-
         image: "enhypen.jpg",
         answers: ["Produce X 101", "BOYS PLANET", " I-LAND", "SIXTEEN"],
         correctAnswer: "I-LAND"
     },
-    {
-
-        answers: ["Produce X 101", "BOYS PLANET", "I-LAND", "SIXTEEN"],
-        correctAnswer: "I-LAND"
-    },
+    
     {
         question: "Which of these songs is NOT a title track by the group Stray Kids?",
         answers: ["Blue Hour", "Back Door", "S-Class", "God's Menu"],
