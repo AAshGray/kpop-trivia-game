@@ -7,24 +7,22 @@ const questions=[
     },
     {
         question: "What is the fandom name for the boy group ATEEZ",
+        image:"atezz.jpg",
         answers: ["ATINY", "MOA", "CARAT", "STAY"],
         correctAnswer: "ATINY"
     },
     {
         question: "In what year did TWICE debut?",
+        image: "twice.jpg",
         answers: ["2015", "2016", "2017", "2018"],
         correctAnswer: "2015"
     },
     
     {
         question: "The boy group ENHYPEN was formed through which survival reality show?",
+        image: "enhypen.jpg",
         answers: ["Produce X 101", "BOYS PLANET", " I-LAND", "SIXTEEN"],
         correctAnswer: "I-LAND"
-    },
-    {
-        question: "Which of these songs is NOT a title track by the group Stray Kids?",
-        answers: ["Blue Hour", "Back Door", " S-Class", "God's Menu"],
-        correctAnswer: "Blue Hour"
     },
     {
     question: "Which member is this?",
@@ -38,6 +36,31 @@ const questions=[
         answers: ["Yunjin", "Chaewon", "Kazuha", "Eunchae"],
         correctAnswer: "Chaewon"
     },
+     {
+        question: "Who was the first k-pop group to perform at Coachella?",
+        image:"Coachella.jpg",
+        answers: ["BTS", "EXO", "EPIK High", "BLACKPINK"],
+        correctAnswer: "EPIK High"
+    },
+    {
+        question: "Which girl group was the first to reach 1 billion views on YouTube?",
+        answers: ["BTS", "PSY", "TWICE", "BLACKPINK"],
+        correctAnswer: "BLACKPINK"
+    },
+    {
+        question: "What group does these logos belong to?",
+        image: "seventeen logo.jpg",
+        answers: ["BTS", "PSY", "EXO", "seventeen"],
+        correctAnswer: "SEVENTEEN"
+    },
+
+    {
+        question: "What group does these lightstick belong to?",
+        image: "Lightstick.jpg",
+        answers: ["ATEEZ", "TXT", "EXO", "seventeen"],
+        correctAnswer: "ATEEZ"
+    },
+
 
 ]
 
