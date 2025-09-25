@@ -7,13 +7,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 0px;
 }
 
 #main {
     background-color: #ffffff;
-    padding: 100px;
+    padding: 20px 10px;
     /* Very rounded edges for cuteness */
     border-radius: 25px; 
     box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2); /* Pink glow shadow */
